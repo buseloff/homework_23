@@ -3,6 +3,18 @@ const { QueryTypes, Op } = require("sequelize");
 //import db from "./db/models";
 const db = require("./db/models");
 
+import router from "./routes";
+const express = require("express");
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.use(express.json());
+app.use(router);
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
+
+/*
 const getAllGroupsWithStudents = async () => {
   try {
     await Groupinfo.findAll({
@@ -73,7 +85,7 @@ console.log(
   "--------------------------------------------------------------------"
 );
 //Все функции закомментированные можно запускать, они работают!!!!!!!!
-/*
+
 getAllGroupsWithStudents().then(async () => {
   await console.log(
     "--------------------------------------------------------------------"
@@ -134,11 +146,10 @@ const deleteStudent = async (condition) => {
   }
 };
 
-deleteStudent({ id: 3 }).then(console.log).catch(console.err);*/
+deleteStudent({ id: 3 }).then(console.log).catch(console.err);
 const groupsWithNumberOfStudents = async () =>
   await db.sequelize.query(
     'SELECT "Groupinfo"."name" as Group_name, COUNT("Student"."id") as Number_of_students FROM "Groupinfo" LEFT JOIN "Student" ON "Groupinfo"."id" = "Student"."id_group" GROUP BY "Groupinfo"."name" ORDER BY Number_of_students DESC',
     { type: QueryTypes.SELECT, logging: false, raw: true }
   );
-groupsWithNumberOfStudents().then(console.log).catch(console.err);
-
+groupsWithNumberOfStudents().then(console.log).catch(console.err);*/
