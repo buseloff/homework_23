@@ -8,6 +8,8 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT;
 
+app.set("view engine", "hbs");
+app.set("views", __dirname + "/views");
 app.use(express.json());
 app.use(router);
 app.listen(port, () => {

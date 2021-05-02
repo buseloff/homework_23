@@ -5,15 +5,20 @@ import {
   getStudentByPk,
   deleteStudentByPk,
   getStudents,
+  createStudentForm,
 } from "../controllers/studentController.js";
+
+const bodyParser = require("body-parser");
+
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 const studentRouter = express.Router();
 
-studentRouter.post("/create", createStudent);
-studentRouter.patch("/:studentId", updateStudentByPk);
-
-studentRouter.get("/:studentId", getStudentByPk);
+studentRouter.post("/create", urlencodedParser, createStudent);
+studentRouter.post("/edit", urlencodedParser, updateStudentByPk);
+studentRouter.get("/create", createStudentForm);
+studentRouter.get("/edit/:studentId", getStudentByPk);
 studentRouter.get("/", getStudents);
-studentRouter.delete("/:studentId", deleteStudentByPk);
+studentRouter.post("/delete/:studentId", urlencodedParser, deleteStudentByPk);
 
 export default studentRouter;
