@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    {{> menu}}
     <h1>Editing a student</h1>
     <form action="http://localhost:3000/students/edit" method="POST">
         <input type="hidden" name="id" value="{{student.id}}" />
@@ -30,6 +31,7 @@
         <input type="submit" value="Отправить" />
     </form>
     <a href="http://localhost:3000/students/">Back to list of students</a>
+    {{> footer}}
 
 </body>
 

@@ -2,14 +2,27 @@ const { Groupinfo, Student } = require("./db/models");
 const { QueryTypes, Op } = require("sequelize");
 //import db from "./db/models";
 const db = require("./db/models");
+const hbs = require("hbs");
+const expressHbs = require("express-handlebars");
 
 import router from "./routes";
 const express = require("express");
 const app = express();
 const port = process.env.PORT;
 
+/*app.engine(
+  "hbs",
+  expressHbs({
+    layoutsDir: "src/views/layouts",
+    defaultLayout: "layout",
+    extname: "hbs",
+  })
+);*/
+
 app.set("view engine", "hbs");
 app.set("views", __dirname + "/views");
+hbs.registerPartials(__dirname + "/views/partials");
+
 app.use(express.json());
 app.use(router);
 app.listen(port, () => {
