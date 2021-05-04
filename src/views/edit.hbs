@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editing a student</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <style>
         .field {
-            width: 180px;
+            width: 240px;
         }
     </style>
 </head>
@@ -19,18 +20,21 @@
     <form action="http://localhost:3000/students/edit" method="POST">
         <input type="hidden" name="id" value="{{student.id}}" />
         <label>Name</label><br>
-        <input name="name" value="{{student.name}}" class="field" /><br><br>
+        <input name="name" value="{{student.name}}" class="field form-control" /><br><br>
         <label>Surname</label><br>
-        <input name="surname" value="{{student.surname}}" class="field" /><br><br>
+        <input name="surname" value="{{student.surname}}" class="field form-control" /><br><br>
         <label>Age</label><br>
-        <input name="age" type="number" min="5" max="100" value="{{student.age}}" class="field" /><br><br>
+        <input name="age" type="number" min="5" max="100" value="{{student.age}}" class="field form-control" /><br><br>
         <label>Email</label><br>
-        <input name="email" type="email" value="{{student.email}}" class="field" /><br><br>
+        <input name="email" type="email" value="{{student.email}}" class="field form-control" /><br><br>
         <label>Id_group</label><br>
-        <input name="group" type="number" min="1" max="50" value="{{student.id_group}}" class="field" /><br><br>
-        <input type="submit" value="Отправить" />
+        <input name="group" type="number" min="1" max="50" value="{{student.id_group}}"
+            class="field form-control" /><br><br>
+        <input type="submit" value="Отправить" class="btn btn-sm btn-primary" />
     </form>
+    <br>
     <a href="http://localhost:3000/students/">Back to list of students</a>
+    <br/>
     {{> footer}}
 
 </body>

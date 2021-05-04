@@ -6,13 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List of students</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 
 <body>
     {{> menu}}
     <h1>List of students</h1>
-    <p><a href="http://localhost:3000/students/create">Create a student</a></p>
-    <table>
+    <p><a href="http://localhost:3000/students/create" class="btn btn-sm btn-primary">Create a student</a></p>
+    <table class="table table-condensed table-striped table-bordered">
         <tr>
             <th>Name</th>
             <th>Surname</th>
@@ -29,14 +30,15 @@
             <td>{{this.email}}</td>
             <td>{{this.id_group}}</td>
             <td>
-                <a href="http://localhost:3000/students/edit/{{this.id}}">Edit</a>|
+                <a href="http://localhost:3000/students/edit/{{this.id}}" class="btn btn-sm btn-primary">Edit</a>|
                 <form action="http://localhost:3000/students/delete/{{this.id}}" method="POST" style="display:inline;">
-                    <input type="submit" value="Delete" />
+                    <input type="submit" value="Delete" class="btn btn-sm btn-primary" />
                 </form>
             </td>
         </tr>
         {{/each}}
     </table>
+    <br>
     {{> footer}}
 
 </body>
